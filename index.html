@@ -73,6 +73,9 @@
             var mult = [1, 9, 8, 7, 6, 5, 4, 3, 2, 1, 1];
             var total = 0;
             var num = [];
+            var en_array = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'P', 'Q', 'T', 'U', 'V', 'W', 'X', 'Z', 'L', 'R', 'S', 'Y']
+            var check_code = [10, 11, 12, 13, 14, 15, 16, 17, 34, 18, 19, 21, 22, 35, 23, 24, 27, 28, 29, 32, 30, 33, 20, 25, 26, 31]
+
             var str_id = document.getElementById('card_id').value;
             if (str_id == "") {
                 alert('請輸入身份證字號');
@@ -86,92 +89,16 @@
             }
 
             var str_en = str_id.charAt(0).toUpperCase();
-            switch (str_en) {
-                case 'A':
-                    str_en = 10;
-                    break;
-                case 'B':
-                    str_en = 11;
-                    break;
-                case 'C':
-                    str_en = 12;
-                    break;
-                case 'D':
-                    str_en = 13;
-                    break;
-                case 'E':
-                    str_en = 14;
-                    break;
-                case 'F':
-                    str_en = 15;
-                    break;
-                case 'G':
-                    str_en = 16;
-                    break;
-                case 'H':
-                    str_en = 17;
-                    break;
-                case 'I':
-                    str_en = 34;
-                    break;
-                case 'J':
-                    str_en = 18;
-                    break;
-                case 'K':
-                    str_en = 19;
-                    break;
-                case 'M':
-                    str_en = 21;
-                    break;
-                case 'N':
-                    str_en = 22;
-                    break;
-                case 'O':
-                    str_en = 35;
-                    break;
-                case 'P':
-                    str_en = 23;
-                    break;
-                case 'Q':
-                    str_en = 24;
-                    break;
-                case 'T':
-                    str_en = 27;
-                    break;
-                case 'U':
-                    str_en = 28;
-                    break;
-                case 'V':
-                    str_en = 29;
-                    break;
-                case 'W':
-                    str_en = 32;
-                    break;
-                case 'X':
-                    str_en = 30;
-                    break;
-                case 'Z':
-                    str_en = 33;
-                    break;
-                case 'L':
-                    str_en = 20;
-                    break;
-                case 'R':
-                    str_en = 25;
-                    break;
-                case 'S':
-                    str_en = 26;
-                    break;
-                case 'I':
-                    str_en = 31;
-                    break;
-            }
+            var en_idx = en_array.indexOf(str_en);
 
-            num[0] = Math.floor(str_en / 10);
-            num[1] = str_en - (num[0] * 10);
+            num[0] = Math.floor(check_code[en_idx] / 10);
+            num[1] = check_code[en_idx] - (num[0] * 10);
+
             for (var i = 2; i < 11; i++) {
                 num[i] = parseInt(str_id.charAt(i - 1));
             }
+
+            console.log(num)
 
             for (var i = 0; i < mult.length; i++) {
                 total += num[i] * mult[i];
